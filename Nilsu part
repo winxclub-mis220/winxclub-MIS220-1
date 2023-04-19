@@ -1,0 +1,39 @@
+import pandas as pd
+
+import numpy as np 
+
+from scipy import stats
+
+import matplotlib.pyplot as plt
+
+import seaborn as sns
+
+# Load the Train dataset
+
+train = pd.read_csv("/content/train (7).csv", header=None, error_bad_lines=False)
+
+train.head()
+
+train.tail()
+
+train.info()
+
+train.describe()
+
+train.shape
+
+print(train.dtypes)
+
+train.head()
+
+train.shape
+
+train.columns = [ 'column' + str(i + 1) for i in range(len(train.columns)) ]
+
+train.head()
+
+---------------
+
+# Plot a histogram of the '62-120' column
+plt.hist(train['column62'], color=['red'])
+plt.show()
