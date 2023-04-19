@@ -1,0 +1,31 @@
+ import seaborn as sns
+
+ # Compute the correlation matrix
+ corr_matrix = train_2.corr()
+
+ # Visualize the correlation matrix with a heatmap
+ sns.heatmap(corr_matrix, cmap='coolwarm', annot=True)
+ plt.title('Correlation Matrix')
+ plt.show()
+--------------------
+
+
+
+ # Plot the 1st column as a histogram
+ plt.hist(train['column62'], bins=10)
+
+ # Set axis labels
+ plt.xlabel('62. Column')
+ plt.ylabel('Number')
+
+ # Show chart
+ plt.show()
+ # plot the 2nd column as a histogram
+ plt.hist(train['column120'], bins=10)
+
+ # Set axis labels
+ plt.xlabel('120. Column')
+ plt.ylabel('Number')
+
+ # Show chart
+ plt.show()
