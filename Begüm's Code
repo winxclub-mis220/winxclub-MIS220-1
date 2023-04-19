@@ -1,0 +1,13 @@
+# upload the dataset
+df = pd.read_csv('/content/drive/MyDrive/train.csv', header=0, index_col=0)
+
+# Select all columns between 1st and 10th columns
+selected_columns = df.iloc[:, 0:15]
+
+# Calculate the correlation matrix
+corr_matrix = selected_columns.corr()
+
+# Visualize the correlation matrix
+sns.heatmap(corr_matrix, cmap='coolwarm', annot=True)
+plt.title('Correlation Matrix')
+plt.show(
