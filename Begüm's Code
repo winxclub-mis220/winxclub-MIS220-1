@@ -10,4 +10,4 @@ corr_matrix = selected_columns.corr()
 # Visualize the correlation matrix
 sns.heatmap(corr_matrix, cmap='coolwarm', annot=True)
 plt.title('Correlation Matrix')
-plt.show(
+plt.show()
