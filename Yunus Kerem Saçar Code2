@@ -42,3 +42,51 @@ def evaluate_model(model, features, targets):
   r_squared = r2_score(targets, predictions)
 
   return mean_squared_error, r_squared
+def train_model(features, targets, cv=5):
+  """Trains a simple linear regression model on the given features and targets using cross-validation.
+
+  Args:
+    features: A NumPy array of features.
+    targets: A NumPy array of target values.
+    cv: The number of cross-validation folds.
+
+  Returns:
+    A linear regression model.
+  """
+
+  # Create a linear regression model.
+  model = LinearRegression()
+
+  # Split the data into training and cross-validation sets.
+  kfold = KFold(n_splits=cv)
+  for train_index, test_index in kfold.split(features):
+    # Fit the model to the training set.
+    model.fit(features[train_index], targets[train_index])
+
+    # Evaluate the model on the cross-validation set.
+    predictions = model.predict(features[test_index])
+    mse = mean_squared_error(targets[test_index], predictions)
+    r2 = r2_score(targets[test_index], predictions)
+
+    print("Cross-validation results: mse = {:.3f}, r2 = {:.3f}".format(mse, r2))
+
+  return model
+def evaluate_model(model, features, targets):
+  """Evaluates a simple linear regression model on the given features and targets using the mean absolute error.
+
+  Args:
+    model: A linear regression model.
+    features: A NumPy array of features.
+    targets: A NumPy array of target values.
+
+  Returns:
+    The mean absolute error.
+  """
+
+  # Make predictions.
+  predictions = model.predict(features)
+
+  # Calculate the mean absolute error.
+  mean_absolute_error = mean_absolute_error(targets, predictions)
+
+  return mean_absolute_error
