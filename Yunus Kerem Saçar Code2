@@ -1,2 +1,44 @@
 pip install sklearn
 import sklearn.model_selection
+def train_model(features, targets):
+  """Trains a simple linear regression model on the given features and targets.
+
+  Args:
+    features: A NumPy array of features.
+    targets: A NumPy array of target values.
+
+  Returns:
+    A linear regression model.
+  """
+
+  # Create a linear regression model.
+  model = LinearRegression()
+
+  # Fit the model to the data.
+  model.fit(features, targets)
+
+  return model
+
+
+def evaluate_model(model, features, targets):
+  """Evaluates a simple linear regression model on the given features and targets.
+
+  Args:
+    model: A linear regression model.
+    features: A NumPy array of features.
+    targets: A NumPy array of target values.
+
+  Returns:
+    A tuple of the mean squared error and the R-squared value.
+  """
+
+  # Make predictions.
+  predictions = model.predict(features)
+
+  # Calculate the mean squared error.
+  mean_squared_error = mean_squared_error(targets, predictions)
+
+  # Calculate the R-squared value.
+  r_squared = r2_score(targets, predictions)
+
+  return mean_squared_error, r_squared
